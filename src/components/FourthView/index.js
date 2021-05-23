@@ -1,13 +1,16 @@
+import { useSelector } from 'react-redux';
 import DisplayState from '../DisplayState';
 
-function FourthView({ props }) {
+function FourthView() {
+  const userIsAdmin = useSelector((state) => state.app.userIsAdmin);
+
   return (
     <div className='flex'>
       <h3>Fourth View</h3>
-      <DisplayState props={{ props }} />
+      <DisplayState />
       <div className='divider' />
       <div style={{ display: 'flex' }}>
-        {props.userIsAdmin ? <div>Secret Data!</div> : <div>You have no acces here!</div>}
+        {userIsAdmin ? <div>Secret Data!</div> : <div>You have no acces here!</div>}
       </div>
     </div>
   );

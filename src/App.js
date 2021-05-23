@@ -1,22 +1,22 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import DisplayState from './components/DisplayState';
 import SecondView from './components/SecondView';
 
 function App() {
-  const [userIsAdmin, setUserIsAdmin] = useState(false);
-  const onChangeState = () => setUserIsAdmin((prev) => !prev);
+  const dispatch = useDispatch();
+  const onChangeState = () => dispatch({ type: 'CHANGE_ADMIN_STATUS' });
 
   return (
     <div className='root flex'>
       <h2>Redux Introduction</h2>
       <button onClick={onChangeState}>Click here to change state</button>
-      <DisplayState props={{ userIsAdmin }} />
+      <DisplayState />
 
       <div className='divider' />
 
       <div style={{ display: 'flex' }}>
-        <SecondView props={{ userIsAdmin }} />
+        <SecondView />
       </div>
     </div>
   );

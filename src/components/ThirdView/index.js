@@ -1,14 +1,14 @@
 import DisplayState from '../DisplayState';
 import FourthView from '../FourthView';
 
-function ThirdView({ props }) {
+function ThirdView() {
   return (
     <div className='flex'>
       <h3>Third View</h3>
-      <DisplayState props={{ props }} />
+      <DisplayState />
       <div className='divider' />
       <div style={{ display: 'flex' }}>
-        <FourthView props={props} />
+        <FourthView />
       </div>
     </div>
   );
