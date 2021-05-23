@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import DisplayState from './components/DisplayState';
+import SecondView from './components/SecondView';
 
 function App() {
+  const [userIsAdmin, setUserIsAdmin] = useState(false);
+  const onChangeState = () => setUserIsAdmin((prev) => !prev);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='root flex'>
+      <h2>Redux Introduction</h2>
+      <button onClick={onChangeState}>Click here to change state</button>
+      <DisplayState props={{ userIsAdmin }} />
+
+      <div className='divider' />
+
+      <div style={{ display: 'flex' }}>
+        <SecondView props={{ userIsAdmin }} />
+      </div>
     </div>
   );
 }
