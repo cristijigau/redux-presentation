@@ -2,10 +2,14 @@ import { useDispatch } from 'react-redux';
 import './App.css';
 import DisplayState from './components/DisplayState';
 import SecondView from './components/SecondView';
+import { changeAdminStatus, getSomeData } from './redux/actions';
 
 function App() {
   const dispatch = useDispatch();
-  const onChangeState = () => dispatch({ type: 'CHANGE_ADMIN_STATUS' });
+  const onChangeState = () => {
+    dispatch(changeAdminStatus());
+    dispatch(getSomeData());
+  };
 
   return (
     <div className='root flex'>
